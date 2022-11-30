@@ -1,0 +1,53 @@
+Dr. Memory version 2.3.0 build 1 built on Feb  6 2020 06:07:09
+start time: 3697308:36:10.473 == 12:36:10.473 10/15/2022
+Recorded 118 suppression(s) from default C:\vs code\C_C++\PA5\DrMemory-Windows-2.3.0-1\bin64\suppress-default.txt
+Using system call file C:\vs code\C_C++\PA5\DrMemory-Windows-2.3.0-1\drmemory\logs\symcache\syscalls_x64.txt
+Syscall mismatch detected.  Running on unknown kernel version!
+new thread #0 id=14620
+WARNING: symbol cache file has wrong version
+
+module load event: "dynamorio.dll" 0x0000000071000000-0x00000000711b1000 modid: 1 C:\vs code\C_C++\PA5\DrMemory-Windows-2.3.0-1\dynamorio\lib64\release\dynamorio.dll
+WARNING: symbol cache file has wrong version
+
+module load event: "drmemorylib.dll" 0x00007ff71eb60000-0x00007ff71edfc000 modid: 2 C:\vs code\C_C++\PA5\DrMemory-Windows-2.3.0-1\bin64\release\drmemorylib.dll
+WARNING: symbol cache file has wrong version
+
+module load event: "main.exe" 0x00007ff78eb20000-0x00007ff78eb45000 modid: 3 C:\vs code\C_C++\PA5\main.exe
+WARNING: symbol cache file has wrong version
+
+module load event: "libstdc++-6.dll" 0x00007ffe2e710000-0x00007ffe2e903000 modid: 4 C:\msys64\mingw64\bin\libstdc++-6.dll
+WARNING: symbol cache file has wrong version
+
+module load event: "libgcc_s_seh-1.dll" 0x00007ffe56540000-0x00007ffe56562000 modid: 5 C:\msys64\mingw64\bin\libgcc_s_seh-1.dll
+WARNING: symbol cache file has wrong version
+
+module load event: "libwinpthread-1.dll" 0x00007ffe6b920000-0x00007ffe6b936000 modid: 6 C:\msys64\mingw64\bin\libwinpthread-1.dll
+WARNING: symbol cache file has wrong version
+
+module load event: "KERNELBASE.dll" 0x00007ffe764b0000-0x00007ffe7682b000 modid: 7 C:\WINDOWS\System32\KERNELBASE.dll
+WARNING: symbol cache file has wrong version
+
+module load event: "KERNEL32.dll" 0x00007ffe77450000-0x00007ffe7750d000 modid: 8 C:\WINDOWS\System32\KERNEL32.DLL
+WARNING: symbol cache file has wrong version
+
+module load event: "msvcrt.dll" 0x00007ffe77510000-0x00007ffe775b3000 modid: 9 C:\WINDOWS\System32\msvcrt.dll
+WARNING: new/delete has no local wrapper => disabling mismatch detection for msvcrt.dll
+WARNING: new/delete has no local wrapper => disabling mismatch detection for msvcrt.dll
+WARNING: new/delete has no local wrapper => disabling mismatch detection for msvcrt.dll
+WARNING: new == new[] => disabling mismatch detection for msvcrt.dll
+WARNING: new/delete has no local wrapper => disabling mismatch detection for msvcrt.dll
+WARNING: new/delete has no local wrapper => disabling mismatch detection for msvcrt.dll
+
+module load event: "ntdll.dll" 0x00007ffe78f20000-0x00007ffe79129000 modid: 10 C:\WINDOWS\SYSTEM32\ntdll.dll
+WARNING: fail to find call to RtlFreeStringRoutine
+WARNING: fail to find call to RtlFreeStringRoutine
+WARNING: fail to find call to RtlFreeStringRoutine
+
+NEW THREAD: main thread 14620
+
+
+Error #1: REPORTED WARNING: writing to readonly memory 0x000000ce83000000-0x000000ce83000020
+# 0 ntdll.dll!memset    (0x00007ffe78fca945 <ntdll.dll+0xaa945>) modid:10
+Note: @0:00:00.347 in thread 14620
+Note: instruction: vmovaps %ymm0 -> 0x20(%rcx)
+	error end

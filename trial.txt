@@ -1,0 +1,35 @@
+create
+name
+manipulate
+name
+3
+play
+verb
+sth cant do during sem
+3
+what
+verb
+sth can
+3
+hihi
+verb
+sth
+2
+5
+filter
+name
+name2
+hi
+manipulate
+name2
+1
+
+void copy_meaning2(Node*node,Node*nnode){
+    nnode->meaning.meaning=node->meaning.meaning;
+    nnode->meaning.type=node->meaning.type;
+}
+void link(Node*node,Node*nnode,int idx){
+    node->set_child(idx,nnode);
+    nnode->get_parent()=node;
+    nnode->set_child(idx,nullptr);
+}

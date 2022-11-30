@@ -1,0 +1,8 @@
+5
+5
+ID 0, *Name 1, Year 0, Location 1, Major 1
+2, Jack, 19, Switzerland, Science
+1, John, 20, UK, Engineering
+4, Alexis, 20, Israel, Fashion
+3, Jill, 22, Japan, Law
+0, Abraham, 18, USA, Politics

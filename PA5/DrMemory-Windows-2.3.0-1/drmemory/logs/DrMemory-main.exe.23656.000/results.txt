@@ -1,0 +1,9 @@
+Dr. Memory version 2.3.0 build 1 built on Feb  6 2020 06:07:09
+Windows version: WinVer=105;Rel=2009;Build=22000;Edition=Core
+Dr. Memory results for pid 23656: "main.exe"
+Application cmdline: ""C:\vs code\C_C++\PA5\main.exe""
+Recorded 118 suppression(s) from default C:\vs code\C_C++\PA5\DrMemory-Windows-2.3.0-1\bin64\suppress-default.txt
+
+Error #1: UNADDRESSABLE ACCESS: executing 0x0000000000000000-0x0000000000000001 1 byte(s)
+# 0 <not in a module> (0x0000000000000000)
+Note: @0:00:00.336 in thread 22564

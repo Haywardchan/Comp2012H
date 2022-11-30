@@ -1,0 +1,23 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"path": "../../../Users/miruh/OneDrive/Desktop/class-makefile-program"
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"stdlib.h": "c",
+			"text": "c",
+			"string.h": "c",
+			"stdbool.h": "c",
+			"iostream": "cpp",
+			"algorithm": "cpp",
+			"ostream": "cpp",
+			"redundant_programs": "cpp",
+			"cmath": "cpp"
+		}
+	}
+}

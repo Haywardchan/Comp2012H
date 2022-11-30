@@ -1,0 +1,12 @@
+# File for suppressing errors found in pid 20436: "main.exe"
+
+# Suppression for Error #1
+UNADDRESSABLE ACCESS
+name=Error #1 (update to meaningful name)
+<not in a module>
+
+## Mod+offs-style suppression for Error #1:
+UNADDRESSABLE ACCESS
+name=Error #1 (update to meaningful name)
+<not in a module>
+

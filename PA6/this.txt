@@ -1,0 +1,46 @@
+
+void Table::addRecord(int index, String *record){
+    if(record==nullptr){
+        cout<<"Record is empty.\n";
+        return;
+    }
+    if(index>numRows||index<0){
+        cout<<"Table row index is out of bounds.\n";
+        return;
+    }    
+    if(empty_or_duplicate_addRecord(numRows, record, fieldHead, primaryKey)){cout<<"Empty or duplicate primary key.\n";return;}
+    if(type_mismatch(fieldHead, record, numCols)){cout<<"Cannot insert non-integer in integer field.\n";return;}
+    int count=0;
+    if(numRows==tableSize){
+        /* Allocate a new dynamic array with 100 more positions and update tableSize.
+        Copy all the data from the old column to the new column.
+        Deallocate the old column and make the current field point to the new column. */
+        for(Field*temp=fieldHead;temp!=nullptr;temp=temp->next){
+            String* ns= new String[tableSize+100];
+            for(int i =0;i<numRows;i++){
+                ns[i]=temp->column[i];
+            }
+            delete [] temp->column;
+            temp->column=ns;
+        }
+        this->tableSize=tableSize+100;
+    }
+    if(index!=numRows/* not last row */){
+        /* moving the record to next record */
+        /* insert record and update numRows */
+        for(Field*temp=fieldHead; temp!=nullptr; temp=temp->next){
+            for(int num=numRows; num>index; num--){
+                temp->column[num]=temp->column[num-1];
+            }
+            (*this)[count][index]=record[count];
+            count++;
+        }
+        numRows++; 
+    }else{
+        for(Field*temp=fieldHead; temp!=nullptr; temp=temp->next){
+            (*this)[count][numRows]=record[count];
+            count++;
+        }
+        numRows++;  
+    }
+}

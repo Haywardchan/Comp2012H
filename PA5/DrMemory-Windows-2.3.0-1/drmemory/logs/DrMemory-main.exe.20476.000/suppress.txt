@@ -1,0 +1,12 @@
+# File for suppressing errors found in pid 20476: "main.exe"
+
+# Suppression for Error #1
+WARNING
+name=Error #1 (update to meaningful name)
+ntdll.dll!memset
+
+## Mod+offs-style suppression for Error #1:
+WARNING
+name=Error #1 (update to meaningful name)
+<ntdll.dll+0xaa945>
+

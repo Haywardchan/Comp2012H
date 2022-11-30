@@ -1,0 +1,8 @@
+Enter year (in range 1800-9999): Enter month (in range 1-12): Enter the first day of week ('s' for Sunday, 'm' for Monday): Print horizontally (h) or vertically (v): January 1800
+Su     5 12 19 26 
+Mo     6 13 20 27 
+Tu     7 14 21 28 
+We  1  8 15 22 29 
+Th  2  9 16 23 30 
+Fr  3 10 17 24 31 
+Sa  4 11 18 25 

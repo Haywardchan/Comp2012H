@@ -1,0 +1,54 @@
+Dr. Memory version 2.3.0 build 1 built on Feb  6 2020 06:07:09
+start time: 3697308:33:25.478 == 12:33:25.478 10/15/2022
+Recorded 118 suppression(s) from default C:\vs code\C_C++\PA5\DrMemory-Windows-2.3.0-1\bin64\suppress-default.txt
+Using system call file C:\vs code\C_C++\PA5\DrMemory-Windows-2.3.0-1\drmemory\logs\symcache\syscalls_x64.txt
+Syscall mismatch detected.  Running on unknown kernel version!
+new thread #0 id=20580
+WARNING: symbol cache file has wrong version
+
+module load event: "dynamorio.dll" 0x0000000071000000-0x00000000711b1000 modid: 1 C:\vs code\C_C++\PA5\DrMemory-Windows-2.3.0-1\dynamorio\lib64\release\dynamorio.dll
+WARNING: symbol cache file has wrong version
+
+module load event: "drmemorylib.dll" 0x00007ff5ac850000-0x00007ff5acaec000 modid: 2 C:\vs code\C_C++\PA5\DrMemory-Windows-2.3.0-1\bin64\release\drmemorylib.dll
+WARNING: symbol cache file has wrong version
+
+module load event: "main.exe" 0x00007ff61c810000-0x00007ff61c835000 modid: 3 C:\vs code\C_C++\PA5\main.exe
+WARNING: assuming operator new is non-placement in main.exe @0x00007ff61c813000
+WARNING: assuming operator delete is non-placement in main.exe @0x00007ff61c813008
+WARNING: symbol cache file has wrong version
+
+module load event: "libstdc++-6.dll" 0x00007ffe2ee60000-0x00007ffe2f053000 modid: 4 C:\msys64\mingw64\bin\libstdc++-6.dll
+WARNING: symbol cache file has wrong version
+
+module load event: "libgcc_s_seh-1.dll" 0x00007ffe56540000-0x00007ffe56562000 modid: 5 C:\msys64\mingw64\bin\libgcc_s_seh-1.dll
+WARNING: symbol cache file has wrong version
+
+module load event: "libwinpthread-1.dll" 0x00007ffe6b920000-0x00007ffe6b936000 modid: 6 C:\msys64\mingw64\bin\libwinpthread-1.dll
+WARNING: symbol cache file has wrong version
+
+module load event: "KERNELBASE.dll" 0x00007ffe764b0000-0x00007ffe7682b000 modid: 7 C:\WINDOWS\System32\KERNELBASE.dll
+WARNING: symbol cache file has wrong version
+
+module load event: "KERNEL32.dll" 0x00007ffe77450000-0x00007ffe7750d000 modid: 8 C:\WINDOWS\System32\KERNEL32.DLL
+WARNING: symbol cache file has wrong version
+
+module load event: "msvcrt.dll" 0x00007ffe77510000-0x00007ffe775b3000 modid: 9 C:\WINDOWS\System32\msvcrt.dll
+WARNING: new/delete has no local wrapper => disabling mismatch detection for msvcrt.dll
+WARNING: new/delete has no local wrapper => disabling mismatch detection for msvcrt.dll
+WARNING: new/delete has no local wrapper => disabling mismatch detection for msvcrt.dll
+WARNING: new == new[] => disabling mismatch detection for msvcrt.dll
+WARNING: new/delete has no local wrapper => disabling mismatch detection for msvcrt.dll
+WARNING: new/delete has no local wrapper => disabling mismatch detection for msvcrt.dll
+
+module load event: "ntdll.dll" 0x00007ffe78f20000-0x00007ffe79129000 modid: 10 C:\WINDOWS\SYSTEM32\ntdll.dll
+WARNING: fail to find call to RtlFreeStringRoutine
+WARNING: fail to find call to RtlFreeStringRoutine
+WARNING: fail to find call to RtlFreeStringRoutine
+
+NEW THREAD: main thread 20580
+
+
+Error #1: UNADDRESSABLE ACCESS: executing 0x0000000000000000-0x0000000000000001 1 byte(s)
+# 0 <not in a module> (0x0000000000000000) modid:0
+Note: @0:00:00.347 in thread 20580
+	error end

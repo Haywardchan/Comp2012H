@@ -1,0 +1,5 @@
+g++ -c main.cpp
+g++ -c Deque_Iterator.cpp
+g++ -c Deque.cpp
+g++ -o main.o Deque_Iterator.o Deque.o
+g++ -o main main.o Deque_Iterator.o Deque.o
