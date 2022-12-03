@@ -1,4 +1,0 @@
-Don't panic! This is a class demo: 
-
-You are invited to a COMP2012H party to be held on April 1st, 2017,
-the Fool's Day.
