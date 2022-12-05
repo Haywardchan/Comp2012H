@@ -59,12 +59,20 @@ void BST<T>::remove(const T& x){ // leftmost item of its right subtree
     }}
 template <typename T>               /* File: bst-print.cpp */
 void BST<T>::print(int depth) const{
-    if (is_empty())                 // Base case
-       return;
+    if (is_empty())return;          // Base case
     root->right.print(depth+1);     // Recursion: right sub-tree
     for (int j = 0; j < depth; j++) // Print the node value
         cout << '\t';
     cout << root->value << endl;
     root->left.print(depth+1);      // Recursion: left sub-tree
+}
+template <typename T>          /* File: bst-insert.cpp */
+void BST<T>::insert(const T& x){
+    if (is_empty())            // Find the spot
+        root = new BSTnode(x);
+    else if (x < root->value)
+        root->left.insert(x);  // Recursion on the left sub-tree
+    else if (x > root->value)
+        root->right.insert(x); // Recursion on the right sub-tree
 }
 ```
