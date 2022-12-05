@@ -75,4 +75,18 @@ void BST<T>::insert(const T& x){
     else if (x > root->value)
         root->right.insert(x); // Recursion on the right sub-tree
 }
+template <typename T>   /* File: bst-find-min.cpp */
+const T& BST<T>::find_min() const{
+    const BSTnode* node = root;
+    while (!node->left.is_empty()) // Look for the leftmost node
+        node = node->left.root;//right.root for find_max
+    return node->value;
+}
+template <typename T>         /* File: bst-contains.cpp */
+bool BST<T>::contains(const T& x) const{
+    if (is_empty())return false;            // Base case #1
+    if (root->value == x)return true;       // Base case #2
+    else if (x < root->value) return root->left.contains(x);// Recursion on the left sub-tree
+    else return root->right.contains(x);// Recursion on the right sub-tree
+}
 ```
