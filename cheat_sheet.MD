@@ -31,18 +31,40 @@ $>>operator$
 3. return the ouput stream os
 
 BST functions
-1. traversal
 ```C++
 template <class T>
-void btree_preorder(BTnode<T>* root,
-     void (*action)(BTnode<T>* r)) // Expect a function on r->data
-{
-    if (root)
-    {
+void btree_preorder(BTnode<T>* root, void (*action)(BTnode<T>* r)){ // Expect a function on r->data
+    if (root){
         action(root);              // e.g. print out root->data
         btree_preorder(root->get_left(), action); //inorder here
         btree_preorder(root->get_right(), action);//postorder here
-    }
+    }}
+template <typename T>           /* File: bst-remove.cpp */
+void BST<T>::remove(const T& x){ // leftmost item of its right subtree
+    if (is_empty())             // Item is not found; do nothing
+        return;
+    if (x < root->value)        // Remove from the left subtree
+        root->left.remove(x);
+    else if (x > root->value)   // Remove from the right subtree
+        root->right.remove(x);
+    else if (root->left.root && root->right.root){ // Found node has 2 children
+        root->value = root->right.find_min(); // operator= defined?
+        root->right.remove(root->value); // min is copied; can be deleted now 
+    }else{                        // Found node has 0 or 1 child
+        BSTnode* deleting_node = root; // Save the root to delete first
+        root = (root->left.is_empty()) ? root->right.root : root->left.root;
+        // Set subtrees to nullptr before removal due to recursive destructor
+        deleting_node->left.root = deleting_node->right.root = nullptr;
+        delete deleting_node;
+    }}
+template <typename T>               /* File: bst-print.cpp */
+void BST<T>::print(int depth) const{
+    if (is_empty())                 // Base case
+       return;
+    root->right.print(depth+1);     // Recursion: right sub-tree
+    for (int j = 0; j < depth; j++) // Print the node value
+        cout << '\t';
+    cout << root->value << endl;
+    root->left.print(depth+1);      // Recursion: left sub-tree
 }
 ```
-2. 
