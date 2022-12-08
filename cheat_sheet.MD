@@ -14,7 +14,7 @@ $[\space]\space operator:$
 $Copy\space Constructor:$
 1. check if empty do nth
 2. assign all members to this
-3. use assignment operator
+3. use assignment operator to *this
 
 $+= operator:$
 1. check if size of the list is full
@@ -265,6 +265,104 @@ ll_cnode* ll_create(const char s[]) {
         if (p->data == c)
             return p;
     }return nullptr;
+}void (*fun_ptr_arr[])(int, int) = {add, subtract, multiply};
+bool Course::addLesson(Lesson* lesson) {
+    if(num_lessons < MAX_LESSONS) { // 0.5 point
+    // 1 point (-0.5 point penalty for typeid the pointer)
+    if(typeid(*lesson) == typeid(F2F_Lesson))
+    lessons[num_lessons] =
+    new F2F_Lesson(*dynamic_cast<F2F_Lesson*>(lesson));
+    // 0.5 point each for correct position, new F2F_Lesson,
+    // dynamic_cast, and proper copy.
+    num_lessons += 1; // 0.25 point
+    else if(typeid(*lesson) == typeid(Online_Lesson))
+    lessons[num_lessons] =
+    new Online_Lesson(*dynamic_cast<Online_Lesson*>(lesson));
+    // 0.5 point each for correct position,
+    // new Online_Lesson, dynamic_cast, and proper copy.
+    num_lessons += 1; // 0.25 point
+    return true; // 0.25 point
+    }
+    return false; // 0.25 point
 }
-void (*fun_ptr_arr[])(int, int) = {add, subtract, multiply};
+Course& Course::operator=(const Course& course) {
+    // 1 point for checking this pointer,
+    // -0.5 point penalty if not checking course address.
+    if(this != &course) {
+    for(int i=0; i<num_lessons; ++i) // 0.5 point
+        delete lessons[i]; // 0.5 point
+    code = course.code; // 0.5 point
+    num_lessons = 0; // 0.5 point
+    for(int i=0; i<course.num_lessons; ++i) // 0.5 point
+        addLesson(course.lessons[i]); // 1 point
+    // If alternate solution of addLesson is used,
+    // them manual deep-copy is required and graded here
+    }
+    // 0.5 point for proper state of this->lessons.
+template <typename T>
+void BST<T>::list_helper(BSTNode<T>* p, std::ostream& os) const {
+    if(p == nullptr) // Empty - 1 point
+        return;
+    list_helper(p->left, os); // Left - 1 point
+    os << p->val << std::endl; // Middle - 1 point
+    list_helper(p->right, os); // Right - 1 point
+}
+template <typename T>
+T BST<T>::successor(const T& query) const {
+    BSTNode<T>* query_p = search_helper(root, query); // Find the element - 1 point
+    if(query_p->right != nullptr) { // Distinguish two cases - 1 point
+        return min_helper(query_p->right)->val; // Find min of right subtree - 1 point
+    } else {
+    BSTNode<T>* curr = query_p;
+    while(curr->parent != nullptr) { // Scan parents back to root - 1 point
+    if(curr->parent->left == curr)
+        return curr->parent->val;
+        curr = curr->parent;
+    }
+    return query; // Handle "query is max" case - 1 point
+    }
+}
+template <typename T>
+BSTNode<T>* BST<T>::search_helper(BSTNode<T>* p, const T& query) const {
+    if(p == nullptr || p->val == query) // nullptr - 1 point
+        return p; // Equal - 1 point
+    else if(query < p->val) // Less - 1 point
+        return search_helper(p->left, query);
+    else if (query > p->val) // Greater - 1 point
+        return search_helper(p->right, query);
+}
+template <typename T>
+void BST<T>::insert_helper(BSTNode<T>* p, const T& element) {
+    if(p == nullptr) // Empty - 1 point
+        root = new BSTNode<T>(element);
+    else {
+        BSTNode<T>*& next =
+        element < p->val ? p->left : p->right; // Find which side - 1 point
+    if(next != nullptr) // Has subtree - 1 point
+        insert_helper(next, element);
+    else {
+        next = new BSTNode<T>(element); // Create node - 1 point
+        next->parent = p; // Update parent - 1 point
+    }}}
+template <typename T>
+void BST<T>::remove_helper(BSTNode<T>* p) {
+    if(p == nullptr)
+        return;
+    else if (p->left != nullptr && p->right != nullptr) {
+        BSTNode<T>* succ = min_helper(p->right); // Find min in right subtree - 1 point
+    p->val = succ->val; // Copy value - 1 point
+    remove_helper(succ); // Recursive call - 1 point
+}
+else {
+    BSTNode<T>*& pointer_to_p_in_tree = (
+    p->parent != nullptr ? // No parent (p is root) case - 1 point
+    (p == p->parent->left ?
+    // Find the pointer to be modified (find which side) - 1 point
+    p->parent->left : p->parent->right) : root
+    );
+    pointer_to_p_in_tree = p->left != nullptr ? p->left : p->right;
+    if(pointer_to_p_in_tree != nullptr) // Update parent - 1 point
+    pointer_to_p_in_tree->parent = p->parent;
+    delete p; // Deallocate - 1 point
+    }}
 ```
