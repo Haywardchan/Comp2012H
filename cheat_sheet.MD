@@ -179,8 +179,7 @@ void AVL<T>::remove(const T& x)
         if (!left_avl.is_empty() && !right_avl.is_empty()){
             root->value = right_avl.find_min(); // Copy the min value
             right_avl.remove(root->value); // Remove node with min value
-        }
-        else{  // Found node has 0 or 1 child
+        }else{  // Found node has 0 or 1 child
             AVLnode* node_to_remove = root; // Save the node first
             *this = left_avl.is_empty() ? right_avl : left_avl;
             // Reset the node to be removed with empty children
@@ -282,10 +281,8 @@ bool Course::addLesson(Lesson* lesson) {
     // new Online_Lesson, dynamic_cast, and proper copy.
     num_lessons += 1; // 0.25 point
     return true; // 0.25 point
-    }
-    return false; // 0.25 point
-}
-Course& Course::operator=(const Course& course) {
+    }return false; // 0.25 point
+}Course& Course::operator=(const Course& course) {
     // 1 point for checking this pointer,
     // -0.5 point penalty if not checking course address.
     if(this != &course) {
@@ -297,8 +294,7 @@ Course& Course::operator=(const Course& course) {
         addLesson(course.lessons[i]); // 1 point
     // If alternate solution of addLesson is used,
     // them manual deep-copy is required and graded here
-    }
-    // 0.5 point for proper state of this->lessons.
+    }// 0.5 point for proper state of this->lessons.
 template <typename T>
 void BST<T>::list_helper(BSTNode<T>* p, std::ostream& os) const {
     if(p == nullptr) // Empty - 1 point
@@ -306,8 +302,7 @@ void BST<T>::list_helper(BSTNode<T>* p, std::ostream& os) const {
     list_helper(p->left, os); // Left - 1 point
     os << p->val << std::endl; // Middle - 1 point
     list_helper(p->right, os); // Right - 1 point
-}
-template <typename T>
+}template <typename T>
 T BST<T>::successor(const T& query) const {
     BSTNode<T>* query_p = search_helper(root, query); // Find the element - 1 point
     if(query_p->right != nullptr) { // Distinguish two cases - 1 point
@@ -320,9 +315,7 @@ T BST<T>::successor(const T& query) const {
         curr = curr->parent;
     }
     return query; // Handle "query is max" case - 1 point
-    }
-}
-template <typename T>
+}}template <typename T>
 BSTNode<T>* BST<T>::search_helper(BSTNode<T>* p, const T& query) const {
     if(p == nullptr || p->val == query) // nullptr - 1 point
         return p; // Equal - 1 point
@@ -330,8 +323,7 @@ BSTNode<T>* BST<T>::search_helper(BSTNode<T>* p, const T& query) const {
         return search_helper(p->left, query);
     else if (query > p->val) // Greater - 1 point
         return search_helper(p->right, query);
-}
-template <typename T>
+}template <typename T>
 void BST<T>::insert_helper(BSTNode<T>* p, const T& element) {
     if(p == nullptr) // Empty - 1 point
         root = new BSTNode<T>(element);
@@ -352,10 +344,8 @@ void BST<T>::remove_helper(BSTNode<T>* p) {
         BSTNode<T>* succ = min_helper(p->right); // Find min in right subtree - 1 point
     p->val = succ->val; // Copy value - 1 point
     remove_helper(succ); // Recursive call - 1 point
-}
-else {
-    BSTNode<T>*& pointer_to_p_in_tree = (
-    p->parent != nullptr ? // No parent (p is root) case - 1 point
+}else {
+    BSTNode<T>*& pointer_to_p_in_tree = (p->parent != nullptr ? // No parent (p is root) case - 1 point
     (p == p->parent->left ?
     // Find the pointer to be modified (find which side) - 1 point
     p->parent->left : p->parent->right) : root
