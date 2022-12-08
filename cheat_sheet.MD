@@ -203,8 +203,7 @@ ll_cnode* ll_create(char c){
     ll_cnode* p = new ll_cnode; p->data = c; p->next = nullptr; return p;
 }// Create a linked list of ll_cnodes with the contents of a char array
 ll_cnode* ll_create(const char s[]) {
-    if (s[0] == NULL_CHAR) // Empty linked list due to empty C string
-        return nullptr;
+    if (s[0] == NULL_CHAR) return nullptr;
     ll_cnode* head = ll_create(s[0]); // Special case with the head
     ll_cnode* p = head; // p is the working pointer
     for (int j = 1; s[j] != NULL_CHAR; ++j){
@@ -212,8 +211,7 @@ ll_cnode* ll_create(const char s[]) {
         p = p->next; // p now points to the new ll_cnode
     }return head; // The WHOLE linked list can be accessed from the head
 }void ll_delete_all(ll_cnode*& head){
-    if (head == nullptr) // An empty list; nothing to delete
-        return;
+    if (head == nullptr) return;
     // STEP 1: First delete the remaining nodes
     ll_delete_all(head->next);
     // For debugging: this shows you what are deleting
@@ -292,8 +290,6 @@ bool Course::addLesson(Lesson* lesson) {
     num_lessons = 0; // 0.5 point
     for(int i=0; i<course.num_lessons; ++i) // 0.5 point
         addLesson(course.lessons[i]); // 1 point
-    // If alternate solution of addLesson is used,
-    // them manual deep-copy is required and graded here
     }// 0.5 point for proper state of this->lessons.
 template <typename T>
 void BST<T>::list_helper(BSTNode<T>* p, std::ostream& os) const {
