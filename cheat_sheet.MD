@@ -3,7 +3,7 @@ $Assignment\space operator:$
 1. Check if the object is same, if same then return
 2. delete all current members (linked list need for loop)
 3. memberwise copy all members from copy object
-4. delete allocated heap spaces
+4. delete allocated heap spaces (if have)
 5. return *this
 
 $[\space]\space operator:$
@@ -159,3 +159,17 @@ lambdas [capture list **=/&/variables** ] (parameter list) **mutable** {body} _(
 
 explicit can be added to conversion operators to prevent implicit conversion
 
+Unnamed objects: pointer held multidimensional dynamic array: 
+
+int** ptr = new int* [size]; for(int j = 0;j < col; j++) ptr[j] = new int [size];
+
+rvalue reference is alias of temp obj: const ref init, argument passing, function return value, evaluation of expr
+
+must have to be inited, cannot be binded to lvalue
+const& cannot be modified and can take almost any arguments, && can be modified but can only hold temp objects
+
+$move\space constructor$ Word(Word&& w) : freq(w.freq), str(w.str){set default}
+
+$move\space assignment$ memberwise copy->assignment using move constructor
+
+explicit generation: =default/ =delete (not)
