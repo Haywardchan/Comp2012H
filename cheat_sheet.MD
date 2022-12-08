@@ -195,3 +195,73 @@ void AVL<T>::rotate_left(){ // The calling AVL node is node a
     fix_height();       // Fix the height of node b, now the new root
 }//rotate right is replacing right with left.
 ```
+linked list
+```C++
+ll_cnode* ll_create(char c){
+    ll_cnode* p = new ll_cnode; p->data = c; p->next = nullptr; return p;
+}// Create a linked list of ll_cnodes with the contents of a char array
+ll_cnode* ll_create(const char s[]) {
+    if (s[0] == NULL_CHAR) // Empty linked list due to empty C string
+        return nullptr;
+    ll_cnode* head = ll_create(s[0]); // Special case with the head
+    ll_cnode* p = head; // p is the working pointer
+    for (int j = 1; s[j] != NULL_CHAR; ++j){
+        p->next = ll_create(s[j]); // Link current cnode to the new cnode
+        p = p->next; // p now points to the new ll_cnode
+    }return head; // The WHOLE linked list can be accessed from the head
+}void ll_delete_all(ll_cnode*& head){
+    if (head == nullptr) // An empty list; nothing to delete
+        return;
+    // STEP 1: First delete the remaining nodes
+    ll_delete_all(head->next);
+    // For debugging: this shows you what are deleting
+    cout << "deleting " << head->data << endl;
+    delete head;        // STEP 2: Then delete the current nodes
+    head = nullptr;     // STEP 3: To play safe, reset head to nullptr
+}void ll_delete(ll_cnode*& head, char c){
+    ll_cnode* prev = nullptr; // Point to previous ll_cnode
+    ll_cnode* current = head; // Point to current ll_cnode
+    // STEP 1: Find the item to be deleted
+    while (current != nullptr && current->data != c) {
+        prev = current;      // Advance both pointers
+        current = current->next;
+    }
+    if (current != nullptr){  // Data is found // STEP 2: Bypass the found item
+        if (current == head) // Special case: delete the first item
+            head = head->next;
+        else prev->next = current->next;
+        delete current;      // STEP 3: Free up the memory of the deleted item
+}}void ll_insert(ll_cnode*& head, char c, unsigned n){
+    // STEP 1: Create the new ll_cnode   
+    ll_cnode* new_cnode = ll_create(c);
+    // Special case: insert at the beginning
+    if (n == 0 || head == nullptr){
+        new_cnode->next = head;
+        head = new_cnode;
+        return;
+    }// STEP 2: Find the node after which the new node is to be added
+    ll_cnode* p = head; 
+    for (int position = 0; 
+         position < n-1  &&  p->next != nullptr; 
+         p = p->next, ++position);
+    // STEP 3,4: Insert the new node between
+    //           the found node and the next node
+    new_cnode->next = p->next; // STEP 3
+    p->next = new_cnode;       // STEP 4
+}int ll_length(const ll_cnode* head){
+    int length = 0;
+    for (const ll_cnode* p = head; p != nullptr; p = p->next)
+        ++length;
+    return length;
+}void ll_print(const ll_cnode* head){
+    for (const ll_cnode* p = head; p != nullptr; p = p->next)
+        cout << p->data;
+    cout << endl;
+}const ll_cnode* ll_search(const ll_cnode* head, char c){
+    for (const ll_cnode* p = head; p != nullptr; p = p->next){
+        if (p->data == c)
+            return p;
+    }return nullptr;
+}
+void (*fun_ptr_arr[])(int, int) = {add, subtract, multiply};
+```
