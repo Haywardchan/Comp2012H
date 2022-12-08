@@ -30,6 +30,53 @@ $>>operator$
 2. print the whole stuff using os  
 3. return the ouput stream os
 
+{ } narrowed conversions
+
+constexpr: only 1 return statement, non-void, refer only constant variables, constexpr functions, non-virtual
+
+lambdas [capture list **=/&/variables** ] (parameter list) **mutable** {body} _(input variable)_ //mutable to allow changing value for = PBV
+[&,a]: all are captured by reference except a is captured by value
+
+explicit can be added to conversion operators to prevent implicit conversion
+
+Unnamed objects: pointer held multidimensional dynamic array: 
+
+int** ptr = new int* [size]; for(int j = 0;j < col; j++) ptr[j] = new int [size];
+
+rvalue reference is alias of temp obj: const ref init, argument passing, function return value, evaluation of expr
+
+must have to be inited, cannot be binded to lvalue
+const& cannot be modified and can take almost any arguments, && can be modified but can only hold temp objects
+
+$move\space constructor$ Word(Word&& w) : freq(w.freq), str(w.str){set default}
+
+$move\space assignment$ memberwise copy->assignment using move constructor
+
+explicit generation: =default/ =delete (not)
+
+public: accessible for any functions (only this can cast derived obj to base, is-a relationship)
+
+protected: member functions and friends including derived classes (less data encapsulation) (protected inheritence turns public to protected) 
+
+private: accessible only to member functions and friends (private inheritence keeps all private) (has-a relationship)
+
+DON'T expose data items inclass, difference between stored and derived data, internal class structures, class implementation details
+
+outside class body, inline is mandatory with the scope operator ::
+
+non-const function cannot take literal constant, and const object
+
+MIL remember follow data member sequences parents->data member->itself
+
+assignment from derived class to base class results in slicing
+
+pointer/ reference must be used to take advantages of polymorphism (dynamic_cast() called RTTI, pointer to obj else return nullptr, slower than static_cast())
+
+RTTI: typeid(expr) return an object of the type type_info which is the typename of the expr
+
+virtual double function() const = 0 //ABC derived class must also implement pure virtual functions else become ABC as well
+
+final have no offspring
 BST functions
 ```C++
 template <class T>
@@ -148,52 +195,3 @@ void AVL<T>::rotate_left(){ // The calling AVL node is node a
     fix_height();       // Fix the height of node b, now the new root
 }//rotate right is replacing right with left.
 ```
-C++ new features
-
-{ } narrowed conversions
-
-constexpr: only 1 return statement, non-void, refer only constant variables, constexpr functions, non-virtual
-
-lambdas [capture list **=/&/variables** ] (parameter list) **mutable** {body} _(input variable)_ //mutable to allow changing value for = PBV
-[&,a]: all are captured by reference except a is captured by value
-
-explicit can be added to conversion operators to prevent implicit conversion
-
-Unnamed objects: pointer held multidimensional dynamic array: 
-
-int** ptr = new int* [size]; for(int j = 0;j < col; j++) ptr[j] = new int [size];
-
-rvalue reference is alias of temp obj: const ref init, argument passing, function return value, evaluation of expr
-
-must have to be inited, cannot be binded to lvalue
-const& cannot be modified and can take almost any arguments, && can be modified but can only hold temp objects
-
-$move\space constructor$ Word(Word&& w) : freq(w.freq), str(w.str){set default}
-
-$move\space assignment$ memberwise copy->assignment using move constructor
-
-explicit generation: =default/ =delete (not)
-
-public: accessible for any functions
-
-protected: member functions and friends including derived classes (less data encapsulation) (protected inheritence turns public to protected)
-
-private: accessible only to member functions and friends (private inheritence keeps all private)
-
-DON'T expose data items inclass, difference between stored and derived data, internal class structures, class implementation details
-
-outside class body, inline is mandatory with the scope operator ::
-
-non-const function cannot take literal constant, and const object
-
-MIL remember follow data member sequences parents->data member->itself
-
-assignment from derived class to base class results in slicing
-
-pointer/ reference must be used to take advantages of polymorphism (dynamic_cast() called RTTI, pointer to obj else return nullptr, slower than static_cast())
-
-RTTI: typeid(expr) return an object of the type type_info which is the typename of the expr
-
-virtual double function() const = 0 //ABC derived class must also implement pure virtual functions else become ABC as well
-
-final have no offspring
