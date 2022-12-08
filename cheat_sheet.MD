@@ -138,7 +138,7 @@ void AVL<T>::remove(const T& x)
             delete node_to_remove;
         }}
     balance(); // Re-balance the tree at every visited node
-}template <typename T>
+}template <typename T> (LR/RL: double rotation)
 void AVL<T>::rotate_left(){ // The calling AVL node is node a
     AVLnode* b = right_subtree().root; // Points to node b
     right_subtree() = b->left;
@@ -173,3 +173,11 @@ $move\space constructor$ Word(Word&& w) : freq(w.freq), str(w.str){set default}
 $move\space assignment$ memberwise copy->assignment using move constructor
 
 explicit generation: =default/ =delete (not)
+
+public: accessible for any functions
+
+private: accessible only to member functions
+
+protect:
+
+DON'T expose data items inclass, difference between stored and derived data, internal class structures, class implementation details
