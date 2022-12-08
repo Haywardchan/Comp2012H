@@ -148,3 +148,14 @@ void AVL<T>::rotate_left(){ // The calling AVL node is node a
     fix_height();       // Fix the height of node b, now the new root
 }//rotate right is replacing right with left.
 ```
+C++ new features
+
+{ } narrowed conversions
+
+constexpr: only 1 return statement, non-void, refer only constant variables, constexpr functions, non-virtual
+
+lambdas [capture list **=/&/variables** ] (parameter list) **mutable** {body} _(input variable)_ //mutable to allow changing value for = PBV
+[&,a]: all are captured by reference except a is captured by value
+
+explicit can be added to conversion operators to prevent implicit conversion
+
