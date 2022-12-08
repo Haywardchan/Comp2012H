@@ -77,6 +77,9 @@ RTTI: typeid(expr) return an object of the type type_info which is the typename 
 virtual double function() const = 0 //ABC derived class must also implement pure virtual functions else become ABC as well
 
 final have no offspring
+
+right const for * is const ptr, left is const object
+
 BST functions
 ```C++
 template <class T>
