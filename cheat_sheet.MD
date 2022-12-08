@@ -297,8 +297,7 @@ bool Course::addLesson(Lesson* lesson) {
     }// 0.5 point for proper state of this->lessons.
 template <typename T>
 void BST<T>::list_helper(BSTNode<T>* p, std::ostream& os) const {
-    if(p == nullptr) // Empty - 1 point
-        return;
+    if(p == nullptr) return;// Empty - 1 point
     list_helper(p->left, os); // Left - 1 point
     os << p->val << std::endl; // Middle - 1 point
     list_helper(p->right, os); // Right - 1 point
@@ -312,8 +311,7 @@ T BST<T>::successor(const T& query) const {
     while(curr->parent != nullptr) { // Scan parents back to root - 1 point
     if(curr->parent->left == curr)
         return curr->parent->val;
-        curr = curr->parent;
-    }
+        curr = curr->parent;}
     return query; // Handle "query is max" case - 1 point
 }}template <typename T>
 BSTNode<T>* BST<T>::search_helper(BSTNode<T>* p, const T& query) const {
@@ -338,8 +336,7 @@ void BST<T>::insert_helper(BSTNode<T>* p, const T& element) {
     }}}
 template <typename T>
 void BST<T>::remove_helper(BSTNode<T>* p) {
-    if(p == nullptr)
-        return;
+    if(p == nullptr)return;
     else if (p->left != nullptr && p->right != nullptr) {
         BSTNode<T>* succ = min_helper(p->right); // Find min in right subtree - 1 point
     p->val = succ->val; // Copy value - 1 point
