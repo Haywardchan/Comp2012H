@@ -176,8 +176,24 @@ explicit generation: =default/ =delete (not)
 
 public: accessible for any functions
 
-private: accessible only to member functions
+protected: member functions and friends including derived classes (less data encapsulation) (protected inheritence turns public to protected)
 
-protect:
+private: accessible only to member functions and friends (private inheritence keeps all private)
 
 DON'T expose data items inclass, difference between stored and derived data, internal class structures, class implementation details
+
+outside class body, inline is mandatory with the scope operator ::
+
+non-const function cannot take literal constant, and const object
+
+MIL remember follow data member sequences parents->data member->itself
+
+assignment from derived class to base class results in slicing
+
+pointer/ reference must be used to take advantages of polymorphism (dynamic_cast() called RTTI, pointer to obj else return nullptr, slower than static_cast())
+
+RTTI: typeid(expr) return an object of the type type_info which is the typename of the expr
+
+virtual double function() const = 0 //ABC derived class must also implement pure virtual functions else become ABC as well
+
+final have no offspring
